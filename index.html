@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<title>唐国扶你老母四了</title>
+<style>
+*{margin:0;padding:0}
+body{
+width:100vw;
+height:100vh;
+overflow:hidden;
+background:#fff;
+position:relative;
+}
+.word{
+position:absolute;
+color:#000;
+font-size:32px;
+font-weight:bold;
+transform-origin:center;
+}
+</style>
+</head>
+<body>
+<script>
+setTimeout(function(){
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const total = 90;
+    for(let i=0;i<total;i++){
+        let div = document.createElement('div');
+        div.className = "word";
+        div.textContent = "唐国福";
+        let gridX = Math.floor(Math.random() * 8);
+        let gridY = Math.floor(Math.random() * 14);
+        let originX = gridX * (w/8) + Math.random()*(w/8);
+        let originY = gridY * (h/14) + Math.random()*(h/14);
+        div.style.left = originX + "px";
+        div.style.top = originY + "px";
+        document.body.appendChild(div);
+
+        let deg = 0;
+        setInterval(()=>{
+            deg += 3;
+            let moveX = Math.sin(deg * 0.02) * 90;
+            let moveY = Math.cos(deg * 0.02) * 90;
+            div.style.left = originX + moveX + "px";
+            div.style.top = originY + moveY + "px";
+            div.style.transform = `rotate(${deg}deg)`;
+        },35)
+    }
+},500)
+</script>
+</body>
+</html>
